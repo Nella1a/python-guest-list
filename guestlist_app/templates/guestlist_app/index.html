@@ -29,8 +29,22 @@
                 >
             </li>
         </div>
+        {% empty %}
+            <div> **** guest list is empty **** </div>
         {% endfor %}
     </ul>
+    </div>
+    <div>
+        <input
+            type="button"
+            value="add guest"
+            onclick="location.href='{% url 'add_guest' %}'"
+        >
+        <input
+            type="button"
+            value="delete all guests"
+            onclick="location.href='#'"
+        >
     </div>
 </article>
 
