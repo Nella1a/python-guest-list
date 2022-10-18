@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<article>
+    <div>
+        <ul style="display: flex; gap: 25px; list-style: none; ">
+            <li>First Name</li>
+            <li>Last Name</li>
+            <li>Attending</li>
+        </ul>
+    </div>
+
+    <div>
+    <ul>
+        {% for guest in object_list %}
+        <div style="display: flex; gap: 45px; list-style: none; ">
+            <li>{{ guest.first_name}}</li>
+            <li>{{ guest.last_name}}</li>
+            <li>
+                <input
+                type="checkbox"
+                checked
+                >
+            </li>
+            <li>
+                <input
+                    type="button"
+                    value="delete"
+                >
+            </li>
+        </div>
+        {% endfor %}
+    </ul>
+    </div>
+</article>
+
+{% endblock %}
