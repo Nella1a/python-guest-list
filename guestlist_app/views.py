@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic import DeleteView
 from django.views.generic import CreateView
+from django.views.generic import UpdateView
 from .models import GuestList
 from django.urls import reverse
 from django.urls import reverse_lazy
@@ -16,10 +17,7 @@ class DeleteGuest(DeleteView):
     model = GuestList
     success_url = reverse_lazy("index")
 
-    def get_context_data(self):
-        context = super().get_context_data()
-        context["delete_all"] = self.kwargs["del_all"]
-        return context
+
 
 class CreateGuest(CreateView):
     model = GuestList
@@ -31,3 +29,14 @@ class CreateGuest(CreateView):
     def get_success_url(self):
         return reverse_lazy("index")
 
+class UpdateAttendance(UpdateView):
+    model = GuestList
+    fields = [
+        "attending"
+    ]
+
+    success_url = reverse_lazy("index")
+    def get_initial(self):
+        initial = super().get_initial()
+        initial["guest_id"] = GuestList.objects.get(id=self.kwargs["pk"])
+        return initial

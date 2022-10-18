@@ -16,10 +16,19 @@
             <li>{{ guest.first_name}}</li>
             <li>{{ guest.last_name}}</li>
             <li>
+                {% if guest.attending %}
                 <input
                 type="checkbox"
+                onclick="location.href='{% url 'change_attd' guest.id %}'"
                 checked
                 >
+                {% else %}
+                 <input
+                type="checkbox"
+                onclick="location.href='{% url 'change_attd' guest.id %}'"
+                >
+                {% endif %}
+
             </li>
             <li>
                 <input
