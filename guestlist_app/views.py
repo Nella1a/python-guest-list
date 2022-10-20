@@ -35,7 +35,6 @@ class UpdateAttendance(UpdateView):
         "attending"
     ]
 
-    success_url = reverse_lazy("index")
     def get_initial(self):
         initial = super().get_initial()
         initial["guest_id"] = GuestList.objects.get(id=self.kwargs["pk"])
