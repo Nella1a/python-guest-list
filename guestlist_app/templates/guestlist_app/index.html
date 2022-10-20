@@ -1,18 +1,19 @@
 {% extends "base.html" %}
+
 {% block content %}
 <article>
-    <div>
-        <ul style="display: flex; gap: 25px; list-style: none; ">
+    <div class="bg-cyan-100">
+        <ul class="grid grid-cols-4 gap-2 justify-items-center">
             <li>First Name</li>
             <li>Last Name</li>
             <li>Attending</li>
         </ul>
     </div>
 
-    <div>
+    <div class="">
     <ul>
         {% for guest in object_list %}
-        <div style="display: flex; gap: 45px; list-style: none; ">
+        <div class="grid grid-cols-4 gap-2 justify-items-center">
             <li>{{ guest.first_name}}</li>
             <li>{{ guest.last_name}}</li>
             <li>
@@ -35,6 +36,7 @@
                     type="button"
                     value="delete"
                     onclick="location.href='{% url 'del_guest' guest.id%}'"
+                    class="border-solid border-1 border-white"
                 >
             </li>
         </div>
