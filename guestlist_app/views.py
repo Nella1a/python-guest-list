@@ -14,6 +14,15 @@ class GuestListList(ListView):
     template_name = "guestlist_app/index.html"
 
 
+class CreateGuestList(CreateView):
+    model = GuestList
+    fields = ["title"]
+
+    def  get_success_url(self):
+        return reverse("index")
+
+
+
 class GuestView(ListView):
   model = Guests
   template_name ="guestlist_app/guestlist.html"
