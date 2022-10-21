@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div>guestlist: {{ guestlist }}  </div>
 <article>
     <div class="bg-cyan-100">
         <ul class="grid grid-cols-4 gap-2 justify-items-center">
@@ -20,13 +21,13 @@
                 {% if guest.attending %}
                 <input
                 type="checkbox"
-                onclick="location.href='{% url 'change_attd' guest.id %}'"
+                onclick="location.href='{% url 'change_attd' guestlist.pk guest.id %}'"
                 checked
                 >
                 {% else %}
                  <input
                 type="checkbox"
-                onclick="location.href='{% url 'change_attd' guest.id %}'"
+                onclick="location.href='{% url 'change_attd' guestlist.pk guest.id %}'"
                 >
                 {% endif %}
 
@@ -35,7 +36,7 @@
                 <input
                     type="button"
                     value="delete"
-                    onclick="location.href='{% url 'del_guest' guest.id%}'"
+                    onclick="location.href='{% url 'del_guest' guestlist.pk guest.id%}'"
                     class="border-solid border-1 border-white"
                 >
             </li>
@@ -49,7 +50,7 @@
         <input
             type="button"
             value="add guest"
-            onclick="location.href='{% url 'add_guest' %}'"
+            onclick="location.href='{% url 'add_guest' guestlist.pk  %}'"
         >
         <input
             type="button"

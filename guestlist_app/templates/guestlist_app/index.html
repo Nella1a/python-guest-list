@@ -2,6 +2,22 @@
 
 {% block content %}
 
+<ul>
 
+    {% for list in object_list %}
+    <li>
+        <div
+            type="button"
+            onclick="location.href='{% url 'guests' list.pk %}'"
+        >
+            {{ list }}  {{ list.pk }}
+        </div>
+
+    </li>
+    {% empty %}
+    <p>currently no lists</p>
+    {% endfor %}
+
+</ul>
 
 {% endblock %}
