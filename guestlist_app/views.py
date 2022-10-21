@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 
 class GuestListView(ListView):
     model = GuestList
-    template_name = "guestlist_app/index.html"
+    template_name = "guestlist_app/guestlist.html"
 
 class DeleteGuest(DeleteView):
     model = GuestList

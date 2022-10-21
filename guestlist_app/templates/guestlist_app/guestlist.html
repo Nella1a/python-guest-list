@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <div class="bg-cyan-100">
+        <ul class="grid grid-cols-4 gap-2 justify-items-center">
+            <li>First Name</li>
+            <li>Last Name</li>
+            <li>Attending</li>
+        </ul>
+    </div>
+
+    <div class="">
+    <ul>
+        {% for guest in object_list %}
+        <div class="grid grid-cols-4 gap-2 justify-items-center">
+            <li>{{ guest.first_name}}</li>
+            <li>{{ guest.last_name}}</li>
+            <li>
+                {% if guest.attending %}
+                <input
+                type="checkbox"
+                onclick="location.href='{% url 'change_attd' guest.id %}'"
+                checked
+                >
+                {% else %}
+                 <input
+                type="checkbox"
+                onclick="location.href='{% url 'change_attd' guest.id %}'"
+                >
+                {% endif %}
+
+            </li>
+            <li>
+                <input
+                    type="button"
+                    value="delete"
+                    onclick="location.href='{% url 'del_guest' guest.id%}'"
+                    class="border-solid border-1 border-white"
+                >
+            </li>
+        </div>
+        {% empty %}
+            <div> **** guest list is empty **** </div>
+        {% endfor %}
+    </ul>
+    </div>
+    <div>
+        <input
+            type="button"
+            value="add guest"
+            onclick="location.href='{% url 'add_guest' %}'"
+        >
+        <input
+            type="button"
+            value="delete all guests"
+            onclick="location.href='#'"
+        >
+    </div>
+</article>
+
+{% endblock %}
