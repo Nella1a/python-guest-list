@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<ul>
+<div class="w-1/2 h-16 flex justify-center items-center mb-20">Your Guestlists</div>
+<ul class="flex flex-col gap-4 w-1/2">
 
     {% for list in object_list %}
-    <li>
+    <li class="bg-slate-500 hover:bg-slate-400 shadow-md h-16 flex justify-center items-center rounded-lg  ">
         <div
             type="button"
             onclick="location.href='{% url 'guests' list.pk %}'"
@@ -19,13 +19,18 @@
     {% endfor %}
 
 </ul>
+<div class="w-1/2 flex justify-center items-center mt-20 gap-8">
 <input
+    class="block bg-violet-500 hover:bg-violet-400 rounded-full w-40 h-10 "
     value="add list"
     type="button"
     onclick="location.href='{% url 'add-list' %}'"
+
 >
 <input
+    class="block bg-violet-500 hover:bg-violet-400 rounded-full w-40 h-10 text-center"
     value="delete all lists"
 >
+</div>
 
 {% endblock %}
